@@ -51,12 +51,16 @@ all: $(NAME)
 $(NAME): $(obj) $(libft)
 	$(CC) $(CFLAGS) -o $@ $^
 
+$(libft):
+	$(MAKE) -C $(libdir)
 clean:
 	$(RM) $(obj) $(dep)
 	$(RM) -r $(objdir) $(ddir)
+	$(MAKE) -C $(libdir) clean
 
 fclean: clean
 	$(RM) -r $(NAME) $(NAME).dSYM tags
+	$(MAKE) -C $(libdir) fclean
 
 re: fclean all
 
