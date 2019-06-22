@@ -13,7 +13,11 @@
 #ifndef SIERPINSKI_H
 # define SIERPINSKI_H
 
+#include <SDL2/SDL.h>
+#include "queue.h"
+
 t_queue	*compute_sierpinski(unsigned int lines);
 void	free_sierpinski(t_queue *sierpinski, unsigned int lines);
 
+int  do_sdl_crap(SDL_Window *w, t_queue *q, unsigned int l);
 #endif

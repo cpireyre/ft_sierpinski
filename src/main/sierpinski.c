@@ -50,6 +50,7 @@ t_queue		*compute_sierpinski(unsigned int lines)
 	ret = ft_memalloc(sizeof(t_queue) * lines);
 	curr = init();
 	push(&curr, lines);
+	push(&curr, lines + 256);
 	i = 0;
 	while (i < lines)
 	{

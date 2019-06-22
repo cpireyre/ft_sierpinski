@@ -6,7 +6,8 @@ SHELL			:= /bin/sh
 CC				:= gcc
 CFLAGS			:= -Wall -Wextra -Werror
 CFLAGS			+= -Wpedantic -std=c11
-CFLAGS			+= -Ilibft/inc -Iinc/
+CFLAGS			+= -Ilibft/inc -Iinc/ 
+@CFLAGS			+= -I/usr/local/include/SDL2 -D_THREAD_SAFE -L/usr/local/SDL2
 DEBUG			:= -g3
 CFLAGS			+= $(DEBUG)
 NAME			:= sierpinski
@@ -21,13 +22,17 @@ maindir			:= main
 main			:= sierpinski.c main.c
 main			:= $(addprefix $(maindir)/, $(main))
 
+sdldir			:= sdl
+sdl			:= crap.c
+sdl			:= $(addprefix $(sdldir)/, $(sdl))
+
 queuedir		:= queue
 queue			:= queue.c
 queue			:= $(addprefix $(queuedir)/, $(queue))
 
 objdir			:= obj
 ddir			:= dep
-src				:= $(main) $(queue)
+src				:= $(main) $(queue) $(sdl)
 obj				:= $(addprefix $(objdir)/, $(src:%.c=%.o))
 dep				:= $(addprefix $(ddir)/, $(src:%.c=%.d))
 
@@ -49,7 +54,7 @@ $(objdir)/%.o:	%.c $$(@D)/.f $$(subst $(objdir),$(ddir),$$(@D))/.f
 all: $(NAME)
 
 $(NAME): $(obj) $(libft)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ -lSDL2
 
 $(libft):
 	$(MAKE) -C $(libdir)
@@ -65,4 +70,4 @@ fclean: clean
 re: fclean all
 
 run: all
-	./$(NAME) 10
+	./$(NAME) 512
