@@ -70,4 +70,4 @@ fclean: clean
 re: fclean all
 
 run: all
-	./$(NAME) 512
+	./$(NAME) 32
