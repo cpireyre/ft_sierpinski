@@ -7,7 +7,7 @@ CC				:= gcc
 CFLAGS			:= -Wall -Wextra -Werror
 CFLAGS			+= -Wpedantic -std=c11
 CFLAGS			+= -Ilibft/inc -Iinc/ 
-@CFLAGS			+= -I/usr/local/include/SDL2 -D_THREAD_SAFE -L/usr/local/SDL2
+#@CFLAGS			+= -I/usr/local/include/SDL2 -D_THREAD_SAFE -L/usr/local/SDL2
 DEBUG			:= -g3
 CFLAGS			+= $(DEBUG)
 NAME			:= sierpinski
@@ -23,7 +23,7 @@ main			:= sierpinski.c main.c
 main			:= $(addprefix $(maindir)/, $(main))
 
 sdldir			:= sdl
-sdl			:= crap.c
+#sdl			:= crap.c
 sdl			:= $(addprefix $(sdldir)/, $(sdl))
 
 queuedir		:= queue
@@ -54,7 +54,7 @@ $(objdir)/%.o:	%.c $$(@D)/.f $$(subst $(objdir),$(ddir),$$(@D))/.f
 all: $(NAME)
 
 $(NAME): $(obj) $(libft)
-	$(CC) $(CFLAGS) -o $@ $^ -lSDL2
+	$(CC) $(CFLAGS) -o $@ $^ #-lSDL2
 
 $(libft):
 	$(MAKE) -C $(libdir)

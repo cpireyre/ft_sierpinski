@@ -14,7 +14,7 @@
 #include "queue.h"
 #include "sierpinski.h"
 #include <unistd.h>
-#include <SDL2/SDL.h>
+// #include <SDL2/SDL.h>
 #define LINESIZE	93
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
